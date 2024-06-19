@@ -1,5 +1,7 @@
 from django.db import models
 
+#Рабочая команда для фикстур
+#python -Xutf8 manage.py dumpdata catalog --indent=2 --exclude auth.permission --exclude contenttypes -o catalog/fixtures/data.json
 
 class Product(models.Model):
     name = models.CharField(max_length=200, verbose_name="Наименование")
