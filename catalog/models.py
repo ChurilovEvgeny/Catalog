@@ -9,6 +9,7 @@ class Product(models.Model):
     price_per_purchase = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Цена за покупку")
     created_at = models.DateField(verbose_name="Дата создания")
     update_at = models.DateField(verbose_name="Дата последнего изменения")
+    manufactured_at = models.DateField(verbose_name="Дата производства продукта", default=None)
 
     def __str__(self):
         return f"{self.name}, {self.category}"
