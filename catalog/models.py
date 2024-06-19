@@ -7,8 +7,8 @@ class Product(models.Model):
     preview = models.ImageField(upload_to="products/", verbose_name="Превью", blank=True, null=True)
     category = models.ForeignKey(to="Category", on_delete=models.SET_NULL, verbose_name="Категория", blank=True, null=True, related_name="products")
     price_per_purchase = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Цена за покупку")
-    created_at = models.DateField(verbose_name="Дата создания")
-    update_at = models.DateField(verbose_name="Дата последнего изменения")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
+    update_at = models.DateTimeField(auto_now=True, verbose_name="Дата последнего изменения")
 
     def __str__(self):
         return f"{self.name}, {self.category}"
