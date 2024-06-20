@@ -33,3 +33,16 @@ class Category(models.Model):
     class Meta:
         verbose_name = "Категория"
         verbose_name_plural = "Категории"
+
+
+class Contact(models.Model):
+    country = models.CharField(max_length=200, verbose_name="Страна")
+    INN = models.CharField(max_length=50, verbose_name="ИНН")
+    address = models.CharField(max_length=200, verbose_name="Страна")
+
+    def __str__(self):
+        return f"{self.country}, {self.INN}, {self.address}"
+
+    class Meta:
+        verbose_name = "Контакт"
+        verbose_name_plural = "Контакты"
