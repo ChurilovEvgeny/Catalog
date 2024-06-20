@@ -25,35 +25,22 @@
         <div class="col-lg-9 col-md-6 col-sm-12">
             <div class="card mb-4 box-shadow">
                 <div class="card-body">
+                    {% for x in contacts %}
                     <table class="table table-striped">
                         <tr>
                             <td class="w-25">Страна</td>
-                            <td>Россия</td>
+                            <td>{{x.country}}</td>
                         </tr>
                         <tr>
                             <td class="w-25">ИНН</td>
-                            <td>77365090612</td>
+                            <td>{{x.INN}}</td>
                         </tr>
                         <tr>
                             <td class="w-25">Адрес</td>
-                            <td>г. Санкт-Петербург, Дворцовая площадь, 2</td>
+                            <td>{{x.address}}</td>
                         </tr>
                     </table>
-
-                    <table class="table table-striped">
-                        <tr>
-                            <td class="w-25">Страна</td>
-                            <td>Россия</td>
-                        </tr>
-                        <tr>
-                            <td class="w-25">ИНН</td>
-                            <td>77365090613</td>
-                        </tr>
-                        <tr>
-                            <td class="w-25">Адрес</td>
-                            <td>ДНР, г. Донецк, ул. Артёма, 98</td>
-                        </tr>
-                    </table>
+                    {% endfor %}
                 </div>
             </div>
         </div>

@@ -1,0 +1,102 @@
+[
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "name": "Шпроты",
+      "description": "Рыба",
+      "preview": "",
+      "category": 1,
+      "price_per_purchase": "125.00",
+      "created_at": "2024-06-19T00:00:00Z",
+      "update_at": "2024-06-19T00:00:00Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "name": "Цемент",
+      "description": "Незаменимая вещь для бетона",
+      "preview": "",
+      "category": 3,
+      "price_per_purchase": "680.00",
+      "created_at": "2024-06-19T00:00:00Z",
+      "update_at": "2024-06-19T00:00:00Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+      "name": "Стол ИКЕА",
+      "description": "Стол, который вы точно видели у кого-то",
+      "preview": "products/table_ikea.png",
+      "category": 1,
+      "price_per_purchase": "1500.00",
+      "created_at": "2024-06-19T00:00:00Z",
+      "update_at": "2024-06-19T00:00:00Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+      "name": "Стул ИКЕА",
+      "description": "На этом стуле вы скорее всего сидели",
+      "preview": "",
+      "category": 5,
+      "price_per_purchase": "800.00",
+      "created_at": "2024-06-19T00:00:00Z",
+      "update_at": "2024-06-19T00:00:00Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+      "name": "Стул обычный",
+      "description": "Просто стул",
+      "preview": "",
+      "category": 5,
+      "price_per_purchase": "500.00",
+      "created_at": "2024-06-19T00:00:00Z",
+      "update_at": "2024-06-19T00:00:00Z"
+    }
+  },
+
+
+
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "name": "Еда",
+      "description": "То что едят"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+      "name": "Строительные материалы",
+      "description": "Всё для стройки"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 4,
+    "fields": {
+      "name": "Столы",
+      "description": "На них кладут вещи"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 5,
+    "fields": {
+      "name": "Стулья",
+      "description": "На них сидят"
+    }
+  }
+]
