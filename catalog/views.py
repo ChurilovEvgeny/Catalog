@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.template import loader
 
 from catalog.models import Product, Contact
@@ -27,4 +27,10 @@ def contacts(request):
     return HttpResponse(template.render(context, request))
 
 
-    # return render(request, 'contacts.html')
+def product(request, pk):
+    prod = get_object_or_404(Product, pk=pk)
+    template = loader.get_template('product.html')
+    context = {
+        'prod': prod
+    }
+    return HttpResponse(template.render(context, request))
