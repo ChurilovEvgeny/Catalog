@@ -1,6 +1,7 @@
 import pathlib
 import uuid
 
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.template import loader
@@ -12,10 +13,18 @@ from config.settings import MEDIA_ROOT
 # Create your views here.
 
 def home(request):
-    products = Product.objects.all()
+    paginator = Paginator(Product.objects.all(), 4)
+    page = request.GET.get('page')
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
+
     template = loader.get_template('home.html')
     context = {
-        'products': products
+        'products' : products,
     }
     return HttpResponse(template.render(context, request))
 
