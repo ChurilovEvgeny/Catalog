@@ -8,8 +8,12 @@ from catalog.models import Product, Contact
 # Create your views here.
 
 def home(request):
-    print(Product.objects.all()[:5])
-    return render(request, 'home.html')
+    products = Product.objects.all()
+    template = loader.get_template('home.html')
+    context = {
+        'products': products
+    }
+    return HttpResponse(template.render(context, request))
 
 
 def contacts(request):
