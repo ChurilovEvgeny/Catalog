@@ -1,0 +1,22 @@
+{% extends 'catalog/base.html' %}
+{% load custom_filters %}
+{% block content %}
+<div class="row text-center">
+    <div class="col-12">
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+                <h3 class="my-0 font-weight-normal">Хотите удалить?</h3>
+                <h4 class="my-0 font-weight-normal">{{ object.title }}</h4>
+            </div>
+            <form method="post">
+                {% csrf_token %}
+                <div class="card-body">
+                    <button type="submit" class="btn btn-danger">Удалить</button>
+                    <a href="{% url 'catalog:blog_list' %}" class="btn btn-primary">Отмена</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
