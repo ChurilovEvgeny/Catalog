@@ -10,20 +10,22 @@ from catalog.models import Product, Contact
 from config.settings import MEDIA_ROOT
 
 
-def contacts(request):
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        phone = request.POST.get('phone')
-        message = request.POST.get('message')
-        print(f"name={name}\nphone={phone}\nmessage={message}")
+# def contacts(request):
+#     if request.method == 'POST':
+#         name = request.POST.get('name')
+#         phone = request.POST.get('phone')
+#         message = request.POST.get('message')
+#         print(f"name={name}\nphone={phone}\nmessage={message}")
+#
+#     contacts = Contact.objects.all().values()
+#     template = loader.get_template('catalog/contacts.html')
+#     context = {
+#         'contacts': contacts,
+#     }
+#     return HttpResponse(template.render(context, request))
 
-    contacts = Contact.objects.all().values()
-    template = loader.get_template('contacts.html')
-    context = {
-        'contacts': contacts,
-    }
-    return HttpResponse(template.render(context, request))
-
+class ContactListView(ListView):
+    model = Contact
 
 class ProductCreateView(CreateView):
     model = Product
