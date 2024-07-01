@@ -1,32 +1,13 @@
 import pathlib
 import uuid
 
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404
 from django.template import loader
+from django.urls import reverse_lazy
+from django.views.generic import DetailView, ListView, CreateView
 
-from catalog.models import Product, Contact, Category
+from catalog.models import Product, Contact
 from config.settings import MEDIA_ROOT
-
-
-# Create your views here.
-
-def home(request):
-    paginator = Paginator(Product.objects.all(), 4)
-    page = request.GET.get('page')
-    try:
-        products = paginator.page(page)
-    except PageNotAnInteger:
-        products = paginator.page(1)
-    except EmptyPage:
-        products = paginator.page(paginator.num_pages)
-
-    template = loader.get_template('home.html')
-    context = {
-        'products' : products,
-    }
-    return HttpResponse(template.render(context, request))
 
 
 def contacts(request):
@@ -44,62 +25,16 @@ def contacts(request):
     return HttpResponse(template.render(context, request))
 
 
-def product(request, pk):
-    prod = get_object_or_404(Product, pk=pk)
-    template = loader.get_template('product.html')
-    context = {
-        'prod': prod
-    }
-    return HttpResponse(template.render(context, request))
+class ProductCreateView(CreateView):
+    model = Product
+    fields = ('name', 'description', 'preview', 'category', 'price_per_purchase')
+    success_url = reverse_lazy('catalog:product_list')
 
 
-def add(request):
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        description = request.POST.get('description')
-        formFile = request.POST.get('formFile')
-        category_id = request.POST.get('category')
-        price = request.POST.get('price')
-        print(f"name={name}\ndescription={description}\nformFile={formFile}\ncategory={category_id}\nprice={price}")
-
-        bin_file = request.FILES.get('formFile')
-        # if 'fromFile' in request.FILES:
-        #     fileName = handle_uploaded_file(request.FILES['formFile'])
-        # else:
-        #     fileName = handle_uploaded_file(None)
-        fileName = handle_uploaded_file(bin_file)
-
-        cat = None if int(category_id) == 0 else Category.objects.get(pk=category_id)
-        Product.objects.create(
-            name=name,
-            description=description,
-            preview=fileName,
-            category=cat,
-            price_per_purchase=price)
-
-    categories = Category.objects.all()
-
-    template = loader.get_template('add.html')
-    context = {
-        'categories': categories
-    }
-    return HttpResponse(template.render(context, request))
+class ProductListView(ListView):
+    model = Product
+    paginate_by = 4
 
 
-def handle_uploaded_file(f) -> str | None:
-    """
-    Функция для загрузки изображений на сервер
-    :param f: файл для загрузки
-    :return: Имя сохраненного файла для записи в БД
-    """
-    if f is not None:
-        # Генерируем уникальное имя str(uuid.uuid4())
-        filename = pathlib.Path('products') / (str(uuid.uuid4()) + pathlib.Path(f.name).suffix)
-        print("FNAM: ", filename)
-        path = MEDIA_ROOT / filename
-        with open(path, "wb+") as destination:
-            for chunk in f.chunks():
-                destination.write(chunk)
-            return str(filename)
-
-    return None
+class ProductDetailView(DetailView):
+    model = Product
