@@ -1,4 +1,4 @@
-{% extends 'base.html'%}
+{% extends 'catalog/base.html'%}
 {% block content %}
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
     <h1 class="display-4">EStore</h1>
@@ -7,7 +7,7 @@
 </div>
 <div class="row text-center">
     <div class="row text-center">
-        {% for prod in products %}
+        {% for prod in page_obj %}
         <div class="col-3">
             <div class="card mb-4 box-shadow">
                 <div class="card-header">
@@ -17,23 +17,23 @@
                     <h2 class="card-title pricing-card-title">Цена {{ prod.price_per_purchase}} ₽</h2>
                     <p class="mt-3 mb-4 text-start m-3">{{ prod.description|truncatechars:100 }}</p>
                     <a type="button" class="btn btn-lg btn-block btn-outline-primary"
-                       href="{% url 'catalog:product' prod.pk %}">Подробнее</a>
+                       href="{% url 'catalog:product_detail' prod.pk %}">Подробнее</a>
                 </div>
             </div>
         </div>
         {% endfor %}
 
         <div id="pages" align="center">
-            {% if products.has_previous %}
-            <a href="?page={{ products.previous_page_number }}">Предыдущая</a>
+            {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">Предыдущая</a>
             {% endif %}
 
             <span class="current">
-                Страница {{ products.number }} из {{ products.paginator.num_pages }}.
+                Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
             </span>
 
-            {% if products.has_next %}
-            <a href="?page={{ products.next_page_number }}">Следующая</a>
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Следующая</a>
             {% endif %}
         </div>
     </div>

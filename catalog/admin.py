@@ -11,10 +11,11 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Category)
-class CateoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(admin.ModelAdmin):
     list_display = ("pk", "name")
 
 
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
     list_display = ("pk", "country", "INN", "address")
+
