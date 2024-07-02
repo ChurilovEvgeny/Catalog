@@ -1,25 +1,13 @@
+from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy, reverse
-from django.views.generic import DetailView, ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import DetailView, ListView, CreateView, UpdateView, DeleteView, TemplateView
 from pytils.translit import slugify
 
 from catalog.models import Product, Contact, Blog
+from config.settings import EMAIL_HOST_USER
 
-
-# def contacts(request):
-#     if request.method == 'POST':
-#         name = request.POST.get('name')
-#         phone = request.POST.get('phone')
-#         message = request.POST.get('message')
-#         print(f"name={name}\nphone={phone}\nmessage={message}")
-#
-#     contacts = Contact.objects.all().values()
-#     template = loader.get_template('catalog/contacts.html')
-#     context = {
-#         'contacts': contacts,
-#     }
-#     return HttpResponse(template.render(context, request))
 
 class ProductCreateView(CreateView):
     model = Product
@@ -36,8 +24,20 @@ class ProductDetailView(DetailView):
     model = Product
 
 
-class ContactListView(ListView):
-    model = Contact
+class ContactPageView(TemplateView):
+    template_name = "catalog/contact_list.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["contacts"] = Contact.objects.all()
+        return context
+
+    def post(self, request, *args, **kwargs):
+        name = request.POST.get('name')
+        phone = request.POST.get('phone')
+        message = request.POST.get('message')
+        print(f"name={name}\nphone={phone}\nmessage={message}")
+        return HttpResponseRedirect(reverse('catalog:contact_view'))
 
 
 class BlogCreateView(CreateView):
@@ -66,9 +66,24 @@ class BlogListView(ListView):
 class BlogDetailView(DetailView):
     model = Blog
 
+    @staticmethod
+    def send_notification(title):
+        send_mail(
+            'Сообщение с сайта',
+            f'Ваш блог {title} достиг 100 просмотров',
+            EMAIL_HOST_USER,
+            ["churilov.e.a@yandex.ru"],
+            fail_silently=False,
+        )
+
     def get_object(self, queryset=None):
         self.object = super().get_object(queryset)
         self.object.views_count += 1
+
+        # Если количество просмотров достигло 100, то отправляем сообщение на почту
+        if self.object.views_count == 100:
+            self.send_notification(self.object.title)
+
         self.object.save()
         return self.object
 
@@ -76,14 +91,6 @@ class BlogDetailView(DetailView):
 class BlogUpdateView(UpdateView):
     model = Blog
     fields = ('title', 'slug', 'body', 'preview', 'is_published', 'views_count')
-
-    # success_url = reverse_lazy('catalog:blog_list')
-
-    def get_object(self, queryset=None):
-        self.object = super().get_object(queryset)
-        self.object.views_count += 1
-        self.object.save()
-        return self.object
 
     def get_success_url(self):
         return reverse('catalog:blog_detail', args=[self.kwargs.get('pk')])
