@@ -21,6 +21,6 @@ class ContactAdmin(admin.ModelAdmin):
 
 
 @admin.register(ProductVersion)
-class ProductVersionAdmin(admin.Model):
+class ProductVersionAdmin(admin.ModelAdmin):
     list_display = ("pk", "product", "version", "version_name", "is_active")
     list_filter = ("product", "is_active")
