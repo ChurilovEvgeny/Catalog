@@ -2,13 +2,15 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import DetailView, ListView, CreateView, TemplateView
 
+from catalog.forms import ProductForm
 from catalog.models import Product, Contact
 
 
 class ProductCreateView(CreateView):
     model = Product
-    fields = ('name', 'description', 'preview', 'category', 'price_per_purchase')
+    # fields = ('name', 'description', 'preview', 'category', 'price_per_purchase')
     success_url = reverse_lazy('catalog:product_list')
+    form_class = ProductForm
 
 
 class ProductListView(ListView):
