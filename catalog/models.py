@@ -52,7 +52,8 @@ class Contact(models.Model):
 
 
 class ProductVersion(models.Model):
-    product = models.ForeignKey(to=Product, on_delete=models.CASCADE, verbose_name="Продукт", related_name="products")
+    product = models.ForeignKey(to=Product, on_delete=models.CASCADE, verbose_name="Продукт",
+                                related_name="product_versions")
     version = models.PositiveIntegerField(verbose_name="Номер версии")
     version_name = models.CharField(max_length=150, verbose_name="Название версии")
     is_active = models.BooleanField(verbose_name="Признак текущей версии", default=False)
