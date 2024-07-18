@@ -8,15 +8,21 @@ class ProductForm(forms.ModelForm):
         model = Product
         fields = '__all__'
 
-    def clean_name(self):
-        cleaned_data = self.cleaned_data.get('name')
-        prepare_data = cleaned_data.strip().lower()
-        forbidden_words = (
-            "казино", "криптовалюта", "крипта", "биржа", "дешево", "бесплатно", "обман", "полиция", "радар")
-        for forbidden in forbidden_words:
-            if forbidden in prepare_data:
-                raise forms.ValidationError(f"Имя не должно содержать запрещенные слова '{forbidden}'!")
+    forbidden_words = (
+        "казино", "криптовалюта", "крипта", "биржа", "дешево", "бесплатно", "обман", "полиция", "радар")
 
+    def clean_name(self):
+        return self.__validate_by_forbidden_words(self.cleaned_data.get('name'), "Имя")
+
+    def clean_description(self):
+        return self.__validate_by_forbidden_words(self.cleaned_data.get('description'), "Описание")
+
+    def __validate_by_forbidden_words(self, cleaned_data, field_name_exception_message):
+        prepare_data = cleaned_data.strip().lower()
+        for forbidden in self.forbidden_words:
+            if forbidden in prepare_data:
+                raise forms.ValidationError(
+                    f"{field_name_exception_message} не должно содержать запрещенные слова '{forbidden}'!")
         return cleaned_data
 
 

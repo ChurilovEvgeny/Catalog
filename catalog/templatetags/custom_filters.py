@@ -17,4 +17,11 @@ def get_active_version(obj):
     queryset = obj.get_queryset()
     if not queryset:
         return "Версия не указана"
-    return queryset.filter(is_active=True).first().version_name
+
+    active_version = queryset.filter(is_active=True).first()
+    if active_version is None:
+        return "Версия не выбрана"
+
+    return active_version.version_name
+
+

@@ -1,7 +1,7 @@
 from django.core.exceptions import ValidationError
 from django.forms import inlineformset_factory
 from django.http import HttpResponseRedirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views.generic import DetailView, ListView, CreateView, TemplateView, UpdateView
 
 from catalog.forms import ProductForm, ProductVersionForm
@@ -33,7 +33,7 @@ class VersionMixin:
             # Почему-то через queryset, filter, count не работало
             # count = sum([1 for item in version_form_set.get_queryset() if item.is_active])
             # При добавлении новой группы (элемента) в formset правильнее оказалось использование cleaned_data
-            count = sum([1 for item in version_form_set.cleaned_data if item['is_active']])
+            count = sum([1 for item in version_form_set.cleaned_data if item.get('is_active')])
             if count > 1:
                 for fs_form in version_form_set.forms:
                     if fs_form.instance.is_active:
@@ -57,11 +57,8 @@ class VersionMixin:
 
 class ProductCreateView(VersionMixin, CreateView):
     model = Product
-    # success_url = reverse_lazy('catalog:product_list')
+    success_url = reverse_lazy('catalog:product_list')
     form_class = ProductForm
-
-    def get_success_url(self):
-        return reverse('catalog:product_detail', args=[self.kwargs.get('pk')])
 
 
 class ProductListView(ListView):
