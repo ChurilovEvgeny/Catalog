@@ -13,7 +13,7 @@ from config.settings import EMAIL_HOST_USER
 
 class BlogCreateView(CreateView):
     model = Blog
-    fields = ('title', 'body', 'preview', 'is_published', 'views_count')
+    fields = ('title', 'body', 'preview', 'is_published')
     success_url = reverse_lazy('blog:blog_list')
 
     def form_valid(self, form):
@@ -66,7 +66,7 @@ class BlogDetailView(DetailView):
 
 class BlogUpdateView(UpdateView):
     model = Blog
-    fields = ('title', 'slug', 'body', 'preview', 'is_published', 'views_count')
+    fields = ('title', 'slug', 'body', 'preview', 'is_published')
 
     def get_success_url(self):
         return reverse('blog:blog_detail', args=[self.kwargs.get('pk')])
