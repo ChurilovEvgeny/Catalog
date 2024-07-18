@@ -31,7 +31,9 @@ class VersionMixin:
         if version_form_set.is_valid():
             # Мне не нравится, но это способ рабочий
             # Почему-то через queryset, filter, count не работало
-            count = sum([1 for item in version_form_set.get_queryset() if item.is_active])
+            # count = sum([1 for item in version_form_set.get_queryset() if item.is_active])
+            # При добавлении новой группы (элемента) в formset правильнее оказалось использование cleaned_data
+            count = sum([1 for item in version_form_set.cleaned_data if item['is_active']])
             if count > 1:
                 for fs_form in version_form_set.forms:
                     if fs_form.instance.is_active:
@@ -44,10 +46,12 @@ class VersionMixin:
 
         return super().form_valid(form)
 
-    def form_invalid(self, form, version_form_set):
+    def form_invalid(self, form, version_form_set=None):
         context = self.get_context_data()
         context['form'] = form
-        context['formset'] = version_form_set
+        # данная проверка и version_form_set=None нужны, чтобы правильно отрабатывало при ошибке основной формы
+        if version_form_set is not None:
+            context['formset'] = version_form_set
         return self.render_to_response(context)
 
 

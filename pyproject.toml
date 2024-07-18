@@ -12,6 +12,8 @@ django = "^5.0.6"
 ipython = "^8.25.0"
 pillow = "^10.3.0"
 pytils = "^0.4.1"
+django-crispy-forms = "^2.2"
+crispy-bootstrap5 = "^2024.2"
 
 
 [build-system]
