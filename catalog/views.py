@@ -37,7 +37,8 @@ class VersionMixin:
             if count > 1:
                 for fs_form in version_form_set.forms:
                     if fs_form.instance.is_active:
-                        fs_form.add_error("is_active", ValidationError("Одновременно может быть выбрана только одна версия"))
+                        fs_form.add_error("is_active",
+                                          ValidationError("Одновременно может быть выбрана только одна версия"))
 
                 return self.form_invalid(form, version_form_set)
 
