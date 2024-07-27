@@ -3,10 +3,12 @@ from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django_countries.data import COUNTRIES
+from django_countries.fields import CountryField
 from phonenumber_field.modelfields import PhoneNumberField
 
 from utils.utils import generate_filename_user_avatar
-
+from django.utils.translation import gettext_lazy as _
 
 # Пример команды для создания суперпользователя (Обязательно через --email)
 # python manage.py createsuperuser --email test@test.ru
@@ -50,7 +52,7 @@ class User(AbstractUser):
     email = models.EmailField(unique=True, verbose_name="Email")
     phone_number = PhoneNumberField(verbose_name="Номер телефона", blank=True, null=True)
     avatar = models.ImageField(upload_to=generate_filename_user_avatar, verbose_name="Аватар", blank=True, null=True)
-    country = models.CharField(max_length=50, verbose_name="Страна")
+    country = CountryField(_(u'Country'), choices=COUNTRIES,  blank_label="(Выберете страну)")
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

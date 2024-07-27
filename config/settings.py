@@ -32,8 +32,8 @@ EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_USE_TLS = False
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
-EMAIL_HOST_USER = 'EMAIL_SENDER'
-EMAIL_HOST_PASSWORD = 'EMAIL_PASSWORD'
+EMAIL_HOST_USER = 'jedi8373@yandex.ru'
+EMAIL_HOST_PASSWORD = 'roxouwsvcvrufljo'
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SERVER_EMAIL = EMAIL_HOST_USER
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django_countries',
     'crispy_forms',
     'crispy_bootstrap5',
     'phonenumber_field',
