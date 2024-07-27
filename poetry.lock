@@ -74,17 +74,17 @@ files = [
 
 [[package]]
 name = "django"
-version = "5.0.6"
+version = "4.2.14"
 description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
 optional = false
-python-versions = ">=3.10"
+python-versions = ">=3.8"
 files = [
-    {file = "Django-5.0.6-py3-none-any.whl", hash = "sha256:8363ac062bb4ef7c3f12d078f6fa5d154031d129a15170a1066412af49d30905"},
-    {file = "Django-5.0.6.tar.gz", hash = "sha256:ff1b61005004e476e0aeea47c7f79b85864c70124030e95146315396f1e7951f"},
+    {file = "Django-4.2.14-py3-none-any.whl", hash = "sha256:3ec32bc2c616ab02834b9cac93143a7dc1cdcd5b822d78ac95fc20a38c534240"},
+    {file = "Django-4.2.14.tar.gz", hash = "sha256:fc6919875a6226c7ffcae1a7d51e0f2ceaf6f160393180818f6c95f51b1e7b96"},
 ]
 
 [package.dependencies]
-asgiref = ">=3.7.0,<4"
+asgiref = ">=3.6.0,<4"
 sqlparse = ">=0.3.1"
 tzdata = {version = "*", markers = "sys_platform == \"win32\""}
 
@@ -105,6 +105,25 @@ files = [
 
 [package.dependencies]
 django = ">=4.2"
+
+[[package]]
+name = "django-phonenumber-field"
+version = "8.0.0"
+description = "An international phone number field for django models."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "django_phonenumber_field-8.0.0-py3-none-any.whl", hash = "sha256:196c917b70c01a98e327f482eb8a4a4a55a29891db551f99078585397370b3ba"},
+    {file = "django_phonenumber_field-8.0.0.tar.gz", hash = "sha256:8a560fe1b01b94c9de8cde22bc373b695f023cc6df4baba00264cb079da9f631"},
+]
+
+[package.dependencies]
+Django = ">=3.2"
+phonenumberslite = {version = ">=7.0.2", optional = true, markers = "extra == \"phonenumberslite\""}
+
+[package.extras]
+phonenumbers = ["phonenumbers (>=7.0.2)"]
+phonenumberslite = ["phonenumberslite (>=7.0.2)"]
 
 [[package]]
 name = "executing"
@@ -217,6 +236,17 @@ files = [
 
 [package.dependencies]
 ptyprocess = ">=0.5"
+
+[[package]]
+name = "phonenumberslite"
+version = "8.13.40"
+description = "Python version of Google's common library for parsing, formatting, storing and validating international phone numbers."
+optional = false
+python-versions = "*"
+files = [
+    {file = "phonenumberslite-8.13.40-py2.py3-none-any.whl", hash = "sha256:be52281499cb7aea74ebff9b96fb6cfe5b9d88a58c720c93cd7c154afa27c706"},
+    {file = "phonenumberslite-8.13.40.tar.gz", hash = "sha256:baa52a1042caaa12b9841cbd701e8de554479c7e4e087e19a36d14c1d05806d4"},
+]
 
 [[package]]
 name = "pillow"
@@ -533,4 +563,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "1be999a67571e88266537cc3faa035aae8a390a05d62b6a07c8257d079664c9e"
+content-hash = "06db6888d928619510dfe3149287fbefc5e4f376bf93d3789d557031e20f320c"
