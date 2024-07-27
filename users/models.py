@@ -61,3 +61,6 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.email
+
+    def get_email(self):
+        return self.email
