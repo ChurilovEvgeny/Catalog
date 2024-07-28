@@ -1,5 +1,6 @@
 from django.db import models
 
+from users.models import User
 from utils.utils import generate_filename_product
 
 
@@ -16,6 +17,9 @@ class Product(models.Model):
     price_per_purchase = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Цена за покупку")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     update_at = models.DateTimeField(auto_now=True, verbose_name="Дата последнего изменения")
+
+    owner = models.ForeignKey(User, verbose_name="Владелец товара", help_text="Укажите владельца товара", blank=True,
+                              null=True, on_delete=models.SET_NULL, related_name="Products")
 
     def __str__(self):
         return f"{self.name}, {self.category}"

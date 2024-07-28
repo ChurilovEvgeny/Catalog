@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import HiddenInput
 
 from catalog.models import Product, ProductVersion
 
@@ -7,6 +8,10 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['owner'].widget = HiddenInput()
 
     forbidden_words = (
         "казино", "криптовалюта", "крипта", "биржа", "дешево", "бесплатно", "обман", "полиция", "радар")

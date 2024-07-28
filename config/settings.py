@@ -32,8 +32,8 @@ EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_USE_TLS = False
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
-EMAIL_HOST_USER = 'EMAIL_SENDER'
-EMAIL_HOST_PASSWORD = 'EMAIL_PASSWORD'
+EMAIL_HOST_USER = 'jedi8373@yandex.ru'
+EMAIL_HOST_PASSWORD = 'roxouwsvcvrufljo'
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SERVER_EMAIL = EMAIL_HOST_USER
@@ -46,11 +46,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'django_countries',
     'crispy_forms',
     'crispy_bootstrap5',
+    'phonenumber_field',
 
     'blog',
     'catalog',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -147,3 +151,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+AUTH_USER_MODEL = 'users.User'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'

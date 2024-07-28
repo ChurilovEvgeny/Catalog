@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ValidationError
 from django.forms import inlineformset_factory
 from django.http import HttpResponseRedirect
@@ -37,7 +38,8 @@ class VersionMixin:
             if count > 1:
                 for fs_form in version_form_set.forms:
                     if fs_form.instance.is_active:
-                        fs_form.add_error("is_active", ValidationError("Одновременно может быть выбрана только одна версия"))
+                        fs_form.add_error("is_active",
+                                          ValidationError("Одновременно может быть выбрана только одна версия"))
 
                 return self.form_invalid(form, version_form_set)
 
@@ -55,10 +57,18 @@ class VersionMixin:
         return self.render_to_response(context)
 
 
-class ProductCreateView(VersionMixin, CreateView):
+class ProductCreateView(LoginRequiredMixin, VersionMixin, CreateView):
     model = Product
     success_url = reverse_lazy('catalog:product_list')
+    login_url = reverse_lazy('users:login')
     form_class = ProductForm
+
+    def form_valid(self, form):
+        product = form.save()
+        user = self.request.user
+        product.owner = user
+        product.save()
+        return super().form_valid(form)
 
 
 class ProductListView(ListView):
@@ -70,9 +80,10 @@ class ProductDetailView(DetailView):
     model = Product
 
 
-class ProductUpdateView(VersionMixin, UpdateView):
+class ProductUpdateView(LoginRequiredMixin, VersionMixin, UpdateView):
     model = Product
     form_class = ProductForm
+    login_url = reverse_lazy('users:login')
 
     def get_success_url(self):
         return reverse('catalog:product_detail', args=[self.kwargs.get('pk')])

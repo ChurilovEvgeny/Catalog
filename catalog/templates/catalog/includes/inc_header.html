@@ -1,9 +1,33 @@
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-    <h5 class="my-0 mr-md-auto font-weight-normal">EStore</h5>
-    <nav class="ms-5">
-        <a class="p-2 btn btn-outline-primary" href="/">Каталог</a>
-        <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:contact_view' %}">Контакты</a>
-        <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:product_create' %}">Добавить продукт</a>
-        <a class="p-2 btn btn-outline-primary" href="{% url 'blog:blog_list' %}">Блоги</a>
-    </nav>
+<div class="row">
+    <div class="col-6 d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+        <h5 class="my-0 mr-md-auto font-weight-normal">EStore</h5>
+        <nav class="ms-5">
+            <a class="p-2 btn btn-outline-primary" href="/">Каталог</a>
+            <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:contact_view' %}">Контакты</a>
+            <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:product_create' %}">Добавить продукт</a>
+            <a class="p-2 btn btn-outline-primary" href="{% url 'blog:blog_list' %}">Блоги</a>
+        </nav>
+    </div>
+
+    <div class="col-6 d-flex flex-column-reverse flex-md-row-reverse align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+        <nav class="ms-5">
+            {% if user.is_authenticated %}
+            <div class="d-flex flex-row align-items-center ">
+                <h5 class="font-weight-normal">Добро пожаловать, {{ user.get_username }}</h5>
+                <nav class="ms-5">
+                    <a class="p-2 btn btn-outline-primary" href="{% url 'users:profile' %}">Профиль</a>
+                    <a class="p-2 btn btn-outline-primary" href="{% url 'users:logout' %}">Выход</a>
+                </nav>
+            </div>
+            {% else %}
+            <div class="d-flex flex-row align-items-center ">
+                <h5 class="font-weight-normal">Добро пожаловать. Пожалуйста, войдите.</h5>
+                <nav class="ms-5">
+                    <a class="p-2 btn btn-outline-primary" href="{% url 'users:login' %}">Вход</a>
+                    <a class="p-2 btn btn-outline-primary" href="{% url 'users:register' %}">Регистрация</a>
+                </nav>
+                {% endif %}
+            </div>
+        </nav>
+    </div>
 </div>
