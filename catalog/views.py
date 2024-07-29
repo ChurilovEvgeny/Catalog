@@ -75,6 +75,25 @@ class ProductListView(ListView):
     model = Product
     paginate_by = 4
 
+    # def get_context_data(self, **kwargs):
+    #     context_data = super().get_context_data(**kwargs)
+    #     for prod in context_data['object_list']:
+    #         ver = prod.product_versions.get_queryset()
+    #
+    #         if not ver:
+    #             prod.cur_version = "Версия не указана"
+    #         else:
+    #             active_version = ver.filter(is_active=True).first()
+    #             if active_version is None:
+    #                 prod.cur_version = "Версия не выбрана"
+    #             else:
+    #                 prod.cur_version = active_version.version_name
+    #
+    #     for prod in context_data['object_list']:
+    #         print(prod.cur_version)
+    #
+    #     return context_data
+
 
 class ProductDetailView(DetailView):
     model = Product
