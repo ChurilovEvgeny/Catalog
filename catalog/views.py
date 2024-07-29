@@ -3,7 +3,7 @@ from django.core.exceptions import ValidationError
 from django.forms import inlineformset_factory
 from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
-from django.views.generic import DetailView, ListView, CreateView, TemplateView, UpdateView
+from django.views.generic import DetailView, ListView, CreateView, TemplateView, UpdateView, DeleteView
 
 from catalog.forms import ProductForm, ProductVersionForm
 from catalog.models import Product, Contact, ProductVersion
@@ -87,6 +87,12 @@ class ProductUpdateView(LoginRequiredMixin, VersionMixin, UpdateView):
 
     def get_success_url(self):
         return reverse('catalog:product_detail', args=[self.kwargs.get('pk')])
+
+
+class ProductDeleteView(LoginRequiredMixin, DeleteView):
+    model = Product
+    success_url = reverse_lazy('catalog:product_list')
+    login_url = reverse_lazy('users:login')
 
 
 class ContactPageView(TemplateView):
