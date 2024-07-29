@@ -24,6 +24,9 @@
                     {% csrf_token %}
                     {{ form|crispy }}
                     <button type="submit" class="btn btn-lg btn-block btn-outline-primary">Сохранить</button>
+                    {% if object %}
+                    <a href="{% url 'catalog:product_delete' object.pk %}" class="btn btn-lg btn-block btn-outline-danger">Удалить</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
