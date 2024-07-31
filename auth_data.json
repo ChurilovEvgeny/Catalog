@@ -423,6 +423,15 @@
   }
 },
 {
+  "model": "auth.permission",
+  "pk": 48,
+  "fields": {
+    "name": "Может управлять блогами",
+    "content_type": 6,
+    "codename": "can_control_blog"
+  }
+},
+{
   "model": "auth.group",
   "pk": 1,
   "fields": {
@@ -431,6 +440,16 @@
       47,
       46,
       45
+    ]
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 2,
+  "fields": {
+    "name": "content_manager",
+    "permissions": [
+      48
     ]
   }
 }

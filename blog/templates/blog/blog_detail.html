@@ -13,6 +13,7 @@
                      alt="Изображение продукта">
                 <p class="mt-3 mb-4 text-start m-3">{{ object.body }}</p>
                 <p class="mt-3 mb-4 text-start m-3">Дата создания: {{ object.created_at }}</p>
+                {% if perms.blog.can_control_blog %}
                 {% if object.is_published %}
                 <a class="btn btn-warning"
                    href="{% url 'blog:blog_toggle_is_published' object.pk %}">Снять с публикации</a>
@@ -20,9 +21,12 @@
                 <a class="btn btn-success"
                    href="{% url 'blog:blog_toggle_is_published' object.pk  %}">Опубликовать</a>
                 {% endif %}
+                {% endif %}
                 <p class="mt-3 mb-4 text-start m-3">Просмотров: {{ object.views_count }}</p>
+                {% if perms.blog.can_control_blog %}
                 <a href="{% url 'blog:blog_update' object.pk %}" class="btn btn-primary">Редактировать</a>
                 <a href="{% url 'blog:blog_delete' object.pk %}" class="btn btn-danger">Удалить</a>
+                {% endif %}
             </div>
         </div>
     </div>
