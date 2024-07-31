@@ -19,3 +19,8 @@ class Blog(models.Model):
         verbose_name = "Блог"
         verbose_name_plural = "Блоги"
         ordering = ['title', 'created_at', 'is_published', 'views_count']
+
+        permissions = [
+                ('can_control_blog', 'Может управлять блогами'),
+            ]
+
