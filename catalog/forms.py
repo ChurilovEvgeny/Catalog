@@ -4,15 +4,7 @@ from django.forms import HiddenInput
 from catalog.models import Product, ProductVersion
 
 
-class ProductForm(forms.ModelForm):
-    class Meta:
-        model = Product
-        fields = '__all__'
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['owner'].widget = HiddenInput()
-
+class ProductBaseForm(forms.ModelForm):
     forbidden_words = (
         "казино", "криптовалюта", "крипта", "биржа", "дешево", "бесплатно", "обман", "полиция", "радар")
 
@@ -29,6 +21,22 @@ class ProductForm(forms.ModelForm):
                 raise forms.ValidationError(
                     f"{field_name_exception_message} не должно содержать запрещенные слова '{forbidden}'!")
         return cleaned_data
+
+
+class ProductForm(ProductBaseForm):
+    class Meta:
+        model = Product
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['owner'].widget = HiddenInput()
+
+
+class ProductModeratorForm(ProductBaseForm):
+    class Meta:
+        model = Product
+        fields = ('description', 'category', 'is_published')
 
 
 class ProductVersionForm(forms.ModelForm):
