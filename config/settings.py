@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
 from pathlib import Path
+
 from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -69,6 +70,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -168,3 +173,7 @@ if CACHE_ENABLED:
             'LOCATION': os.getenv('CACHE_LOCATION')
         }
     }
+
+CACHE_MIDDLEWARE_ALIAS = 'default'  # cache alias
+CACHE_MIDDLEWARE_SECONDS = 60  # number of seconds each page should be cached.
+CACHE_MIDDLEWARE_KEY_PREFIX = ''  # name of site if multiple sites are used
