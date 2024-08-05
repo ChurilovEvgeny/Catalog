@@ -1,102 +1,391 @@
 [
-  {
-    "model": "catalog.product",
-    "pk": 1,
-    "fields": {
-      "name": "Шпроты",
-      "description": "Рыба",
-      "preview": "",
-      "category": 1,
-      "price_per_purchase": "125.00",
-      "created_at": "2024-06-19T00:00:00Z",
-      "update_at": "2024-06-19T00:00:00Z"
-    }
-  },
-  {
-    "model": "catalog.product",
-    "pk": 2,
-    "fields": {
-      "name": "Цемент",
-      "description": "Незаменимая вещь для бетона",
-      "preview": "",
-      "category": 3,
-      "price_per_purchase": "680.00",
-      "created_at": "2024-06-19T00:00:00Z",
-      "update_at": "2024-06-19T00:00:00Z"
-    }
-  },
-  {
-    "model": "catalog.product",
-    "pk": 3,
-    "fields": {
-      "name": "Стол ИКЕА",
-      "description": "Стол, который вы точно видели у кого-то",
-      "preview": "products/table_ikea.png",
-      "category": 1,
-      "price_per_purchase": "1500.00",
-      "created_at": "2024-06-19T00:00:00Z",
-      "update_at": "2024-06-19T00:00:00Z"
-    }
-  },
-  {
-    "model": "catalog.product",
-    "pk": 4,
-    "fields": {
-      "name": "Стул ИКЕА",
-      "description": "На этом стуле вы скорее всего сидели",
-      "preview": "",
-      "category": 5,
-      "price_per_purchase": "800.00",
-      "created_at": "2024-06-19T00:00:00Z",
-      "update_at": "2024-06-19T00:00:00Z"
-    }
-  },
-  {
-    "model": "catalog.product",
-    "pk": 5,
-    "fields": {
-      "name": "Стул обычный",
-      "description": "Просто стул",
-      "preview": "",
-      "category": 5,
-      "price_per_purchase": "500.00",
-      "created_at": "2024-06-19T00:00:00Z",
-      "update_at": "2024-06-19T00:00:00Z"
-    }
-  },
-
-
-
-  {
-    "model": "catalog.category",
-    "pk": 1,
-    "fields": {
-      "name": "Еда",
-      "description": "То что едят"
-    }
-  },
-  {
-    "model": "catalog.category",
-    "pk": 3,
-    "fields": {
-      "name": "Строительные материалы",
-      "description": "Всё для стройки"
-    }
-  },
-  {
-    "model": "catalog.category",
-    "pk": 4,
-    "fields": {
-      "name": "Столы",
-      "description": "На них кладут вещи"
-    }
-  },
-  {
-    "model": "catalog.category",
-    "pk": 5,
-    "fields": {
-      "name": "Стулья",
-      "description": "На них сидят"
-    }
+{
+  "model": "catalog.product",
+  "pk": 1,
+  "fields": {
+    "name": "Шпроты",
+    "description": "Рыба",
+    "preview": "",
+    "category": 1,
+    "price_per_purchase": "125.00",
+    "created_at": "2024-06-19T21:44:26.624Z",
+    "update_at": "2024-07-18T08:31:45.890Z"
   }
+},
+{
+  "model": "catalog.product",
+  "pk": 2,
+  "fields": {
+    "name": "Цемент",
+    "description": "Незаменимая вещь для бетона",
+    "preview": "",
+    "category": 3,
+    "price_per_purchase": "680.00",
+    "created_at": "2024-06-19T21:44:26.624Z",
+    "update_at": "2024-06-19T21:44:26.624Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 3,
+  "fields": {
+    "name": "Стол ИКЕА",
+    "description": "Стол, который вы точно видели у кого-то",
+    "preview": "products/table_ikea.png",
+    "category": 1,
+    "price_per_purchase": "1500.00",
+    "created_at": "2024-06-19T21:44:26.624Z",
+    "update_at": "2024-06-19T21:44:26.625Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 4,
+  "fields": {
+    "name": "Стул ИКЕА",
+    "description": "На этом стуле вы скорее всего сидели",
+    "preview": "",
+    "category": 5,
+    "price_per_purchase": "800.00",
+    "created_at": "2024-06-19T21:44:26.625Z",
+    "update_at": "2024-06-19T21:44:26.625Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 5,
+  "fields": {
+    "name": "Стул обычный",
+    "description": "Просто стул",
+    "preview": "",
+    "category": 5,
+    "price_per_purchase": "500.00",
+    "created_at": "2024-06-19T21:44:26.625Z",
+    "update_at": "2024-06-19T21:44:26.625Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 6,
+  "fields": {
+    "name": "Мышь",
+    "description": "Мышь для ПК",
+    "preview": "",
+    "category": 4,
+    "price_per_purchase": "150.00",
+    "created_at": "2024-06-24T15:34:55.337Z",
+    "update_at": "2024-06-24T15:34:55.337Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 7,
+  "fields": {
+    "name": "Гость",
+    "description": "srrfsg",
+    "preview": "",
+    "category": null,
+    "price_per_purchase": "444.00",
+    "created_at": "2024-06-24T15:43:54.952Z",
+    "update_at": "2024-06-24T15:43:54.952Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 8,
+  "fields": {
+    "name": "Гость1",
+    "description": "sfsdfs",
+    "preview": "products\\dc45a239-76c2-417c-b3a2-5c8ed83bf1e3.jpg",
+    "category": 1,
+    "price_per_purchase": "4567.00",
+    "created_at": "2024-06-24T15:48:29.500Z",
+    "update_at": "2024-06-24T15:48:29.500Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 9,
+  "fields": {
+    "name": "Ильина Екатерина Валерьевна",
+    "description": "fff",
+    "preview": "products\\093ce23d-5e63-4c27-a6ef-a7f3931ebdda.jpg",
+    "category": null,
+    "price_per_purchase": "444.00",
+    "created_at": "2024-06-24T15:51:41.213Z",
+    "update_at": "2024-06-24T15:51:41.213Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 10,
+  "fields": {
+    "name": "sfsdf",
+    "description": "sdfsdf",
+    "preview": "products\\76054e85-4f2d-4a89-bc30-889975ece0a9.jpg",
+    "category": 1,
+    "price_per_purchase": "5555.00",
+    "created_at": "2024-06-24T15:57:10.796Z",
+    "update_at": "2024-06-24T15:57:10.796Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 11,
+  "fields": {
+    "name": "Z",
+    "description": "ZZZZ",
+    "preview": "products/Boris_Pasternak_1959_photo.jpg",
+    "category": 3,
+    "price_per_purchase": "589.00",
+    "created_at": "2024-07-01T12:56:16.911Z",
+    "update_at": "2024-07-01T12:56:16.911Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 12,
+  "fields": {
+    "name": "Яр",
+    "description": "aaaa",
+    "preview": "products/04511fa59b484281941a71b17427e714.png",
+    "category": 1,
+    "price_per_purchase": "234.00",
+    "created_at": "2024-07-01T13:00:24.606Z",
+    "update_at": "2024-07-18T08:58:03.491Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 13,
+  "fields": {
+    "name": "комсомольскэ",
+    "description": "xfgxvxvcxvxcvxcvxc",
+    "preview": "products/223431ac6bd04c06b2d669ca01406b00.jpg",
+    "category": 1,
+    "price_per_purchase": "400.00",
+    "created_at": "2024-07-02T11:28:05.834Z",
+    "update_at": "2024-07-02T11:28:05.834Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 14,
+  "fields": {
+    "name": "Товар",
+    "description": "Товар 1",
+    "preview": "",
+    "category": 1,
+    "price_per_purchase": "1000.00",
+    "created_at": "2024-07-17T12:49:27.362Z",
+    "update_at": "2024-07-17T12:49:27.384Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 15,
+  "fields": {
+    "name": "Гость",
+    "description": "Ujcnmdsadas",
+    "preview": "",
+    "category": 4,
+    "price_per_purchase": "12321.00",
+    "created_at": "2024-07-17T13:33:08.483Z",
+    "update_at": "2024-07-17T13:33:08.494Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 16,
+  "fields": {
+    "name": "rrfe",
+    "description": "fdgdfg",
+    "preview": "",
+    "category": 1,
+    "price_per_purchase": "666.00",
+    "created_at": "2024-07-18T16:15:39.608Z",
+    "update_at": "2024-07-18T16:15:39.609Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 17,
+  "fields": {
+    "name": "rrfe",
+    "description": "fdgdfg",
+    "preview": "",
+    "category": 1,
+    "price_per_purchase": "666.00",
+    "created_at": "2024-07-18T16:16:41.477Z",
+    "update_at": "2024-07-18T16:16:41.486Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 18,
+  "fields": {
+    "name": "rrfe",
+    "description": "fdgdfg",
+    "preview": "",
+    "category": 1,
+    "price_per_purchase": "666.00",
+    "created_at": "2024-07-18T16:17:21.024Z",
+    "update_at": "2024-07-18T16:17:21.032Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 19,
+  "fields": {
+    "name": "zzzzz",
+    "description": "zzz",
+    "preview": "",
+    "category": 3,
+    "price_per_purchase": "333.00",
+    "created_at": "2024-07-18T16:17:34.470Z",
+    "update_at": "2024-07-18T16:18:05.838Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 20,
+  "fields": {
+    "name": "123",
+    "description": "234243",
+    "preview": "",
+    "category": 3,
+    "price_per_purchase": "0.05",
+    "created_at": "2024-07-18T16:18:25.060Z",
+    "update_at": "2024-07-18T16:18:25.074Z"
+  }
+},
+{
+  "model": "catalog.category",
+  "pk": 1,
+  "fields": {
+    "name": "Еда",
+    "description": "То что едят"
+  }
+},
+{
+  "model": "catalog.category",
+  "pk": 3,
+  "fields": {
+    "name": "Строительные материалы",
+    "description": "Всё для стройки"
+  }
+},
+{
+  "model": "catalog.category",
+  "pk": 4,
+  "fields": {
+    "name": "Столы",
+    "description": "На них кладут вещи"
+  }
+},
+{
+  "model": "catalog.category",
+  "pk": 5,
+  "fields": {
+    "name": "Стулья",
+    "description": "На них сидят"
+  }
+},
+{
+  "model": "catalog.contact",
+  "pk": 1,
+  "fields": {
+    "country": "Россия",
+    "INN": "77365090612",
+    "address": "г. Санкт-Петербург, Дворцовая площадь, 2"
+  }
+},
+{
+  "model": "catalog.contact",
+  "pk": 2,
+  "fields": {
+    "country": "Россия",
+    "INN": "77365090613",
+    "address": "ДНР, г. Донецк, ул. Артёма, 98"
+  }
+},
+{
+  "model": "catalog.contact",
+  "pk": 3,
+  "fields": {
+    "country": "СССР",
+    "INN": "Народ",
+    "address": "Советский Союз"
+  }
+},
+{
+  "model": "catalog.productversion",
+  "pk": 1,
+  "fields": {
+    "product": 12,
+    "version": 1,
+    "version_name": "Первая версия",
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.productversion",
+  "pk": 2,
+  "fields": {
+    "product": 14,
+    "version": 1,
+    "version_name": "Вер 1",
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.productversion",
+  "pk": 3,
+  "fields": {
+    "product": 15,
+    "version": 2,
+    "version_name": "sdfsdf",
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.productversion",
+  "pk": 4,
+  "fields": {
+    "product": 1,
+    "version": 1,
+    "version_name": "Dtyh `1",
+    "is_active": false
+  }
+},
+{
+  "model": "catalog.productversion",
+  "pk": 5,
+  "fields": {
+    "product": 1,
+    "version": 2,
+    "version_name": "Вер 2",
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.productversion",
+  "pk": 7,
+  "fields": {
+    "product": 19,
+    "version": 1,
+    "version_name": "566",
+    "is_active": false
+  }
+},
+{
+  "model": "catalog.productversion",
+  "pk": 8,
+  "fields": {
+    "product": 20,
+    "version": 2,
+    "version_name": "4444",
+    "is_active": false
+  }
+}
 ]
