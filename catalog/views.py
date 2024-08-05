@@ -6,7 +6,8 @@ from django.urls import reverse, reverse_lazy
 from django.views.generic import DetailView, ListView, CreateView, TemplateView, UpdateView, DeleteView
 
 from catalog.forms import ProductForm, ProductVersionForm, ProductModeratorForm
-from catalog.models import Product, Contact, ProductVersion
+from catalog.models import Product, Contact, ProductVersion, Category
+from catalog.services import get_cached_category_list
 
 
 class VersionMixin:
@@ -119,3 +120,10 @@ class ContactPageView(TemplateView):
         message = request.POST.get('message')
         print(f"name={name}\nphone={phone}\nmessage={message}")
         return HttpResponseRedirect(reverse('catalog:contact_view'))
+
+
+class CategoryListView(ListView):
+    model = Category
+
+    def get_queryset(self):
+        return get_cached_category_list()
